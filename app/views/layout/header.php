@@ -3,7 +3,8 @@
 use App\Helpers\Session;
 
 Session::start();
-$activepage = basename($_SERVER['REQUEST_URI']);
+$activepage = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+
 ?>
 <!DOCTYPE html>
 <html>
