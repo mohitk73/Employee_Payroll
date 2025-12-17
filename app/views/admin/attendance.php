@@ -33,8 +33,8 @@
                 <?php foreach ($employees as $row) { ?>
                     <tr>
                         <td><?= $row['id'] ?></td>
-                        <td><?= htmlspecialchars($row['name']) ?></td>
-                        <td><?= htmlspecialchars($row['position']) ?></td>
+                        <td><?= $row['name'] ?></td>
+                        <td><?= $row['position'] ?></td>
 
                         <td>
                             <?php if ($row['status'] === NULL) { ?>

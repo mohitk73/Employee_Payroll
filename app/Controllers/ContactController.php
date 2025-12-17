@@ -50,9 +50,11 @@ class ContactController extends Controller
             }
 
         }
+
+
         $this->view('/employee/contactsupport',[
             'message'=>$message,
-            'error'=>$errors,
+            'errors'=>$errors,
         ]);
     }
 }

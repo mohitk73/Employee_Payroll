@@ -21,7 +21,7 @@
     <input type="email" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required><br><br>
 
     <label>Password</label><br>
-    <input type="password" name="password" required><br><br>
+    <input type="password" name="password" minlength="6" maxlength="255" required><br><br>
 
     <label>Role</label><br>
     <select name="role">
@@ -32,7 +32,7 @@
 </select><br><br>
 
     <label>Phone</label><br>
-    <input type="text" name="phone" maxlength="10"  pattern="[0-9]{10}" required><br><br>
+    <input type="text" name="phone" maxlength="10"  pattern="[0-9]{10}" title="Enter numbers only" required><br><br>
 
     <label>Position</label><br>
     <input type="text" name="position" required><br><br>
@@ -60,8 +60,7 @@
     <input type="date" name="date_of_joining" required><br><br>
 
     <label>Address</label><br>
-    <textarea name="address" rows="3" pattern="[A-Za-z0-9\s,.-]{5,150}" maxlength="150" required>
-        <?= isset($employee['address']) ? htmlspecialchars($employee['address']) : '' ?>
+    <textarea name="address" rows="3" pattern="[A-Za-z0-9\s,.-]" maxlength="150" required>
     </textarea><br><br>
 
     <label>Status</label><br>

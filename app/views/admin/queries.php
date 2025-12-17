@@ -38,8 +38,8 @@
                                 <td><?= $query['employee_id'] ?></td>
                                 <td><?= htmlspecialchars($query['name']) ?></td>
                                 <td><?= htmlspecialchars($query['email']) ?></td>
-                                <td><?= htmlspecialchars($query['subject']) ?></td>
-                                <td><?= htmlspecialchars($query['message']) ?></td>
+                                <td><?= $query['subject'] ?></td>
+                                <td><?= $query['message'] ?></td>
                                 <td><?= htmlspecialchars($query['created_at']) ?></td>
                                 <td>
                                     <?php if ($query['status'] == 1) { ?>
@@ -72,6 +72,7 @@
                     </tbody>
                     </thead>
                 </table>
+                <!--pagination -->
                 <?php include '../app/views/layout/pagination.php' ?>
 
             </div>

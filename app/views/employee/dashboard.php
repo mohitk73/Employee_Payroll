@@ -150,8 +150,8 @@
                             <tr>  
                                 <td><?= $sn++ ?></td>
                                     <td><?= $query['id'] ?></td>
-                                    <td><?= htmlspecialchars($query['subject']) ?></td>
-                                    <td><?= htmlspecialchars($query['message']) ?></td>
+                                    <td><?= $query['subject'] ?></td>
+                                    <td><?= $query['message'] ?></td>
                                     <td><?php if($query['status'] == 1) {?>
                                         <span style="color: green;">Resolved</span>
                                         <?php } else {?>

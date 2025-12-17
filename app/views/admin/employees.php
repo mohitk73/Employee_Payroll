@@ -55,7 +55,7 @@
                     <tr>
                         <td><?= $sn++ ?></td>
                         <td><?= $row['id'] ?></td>
-                        <td><?= htmlspecialchars($row['name']) ?></td>
+                        <td><?= $row['name'] ?></td>
                         <td><?= $row['email'] ?></td>
                         <td><?= $roles[$row['role']] ?? 'Unknown' ?></td>
                         <td><?= $row['phone'] ?></td>

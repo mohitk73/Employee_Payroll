@@ -203,8 +203,7 @@ public function addEmployee(array $data)
         return $stmt->execute();
     }
 
-        public function addSalary($employee_id, $basic_salary, $hra, $deductions)
-    {
+    public function addSalary($employee_id, $basic_salary, $hra, $deductions){
 
         $stmt = $this->conn->prepare("INSERT INTO salaries (employee_id, basic_salary, hra_allowances, deduction) 
                                       VALUES (?, ?, ?, ?)");

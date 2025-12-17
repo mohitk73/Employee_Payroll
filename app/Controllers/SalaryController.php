@@ -96,29 +96,46 @@ class SalaryController extends Controller
         if (!is_numeric($deductions) || $deductions < 0) {
             $errors[] = "Deductions must be a valid positive number.";
         }
-        $max_basic_salary_value = 1000000; 
-        $max_hra_value = 999999.99; 
-        $max_deductions_value = 500000; 
-        if ($basic_salary > $max_basic_salary_value) {
-            $errors[] = "Basic Salary is too large.";
-        }
-        if ($hra > $max_hra_value) {
-            $errors[] = "HRA value is too large.";
-        }
-        if ($deductions > $max_deductions_value) {
-            $errors[] = "Deductions value is too large.";
+         // Limits
+        $maxBasicSalary = 100000000;
+        $maxHra         = 9999999.99;
+        $maxDeductions  = 5000000;
+
+        if (is_numeric($basic_salary) && $basic_salary > $maxBasicSalary) {
+            $errors[] = "Basic Salary cannot exceed ₹1,000,000,00";
         }
 
-        if (empty($errors)) {
-            $updated = $salaryModel->updatesalary($id, $basic_salary, $hra, $deductions);
+        if (is_numeric($hra) && $hra > $maxHra) {
+            $errors[] = "HRA cannot exceed ₹999,999.99.";
+        }
 
-            if ($updated) {
-                header("Location:/salarystructure");
-                exit();
-            } else {
-                $errors[] = "Something went wrong while updating. Try again.";
+        if (is_numeric($deductions) && $deductions > $maxDeductions) {
+            $errors[] = "Deductions cannot exceed ₹500,000.";
+        }
+
+        if (is_numeric($basic_salary) && !preg_match('/^\d+(\.\d{1,2})?$/', $basic_salary)) {
+            $errors[] = "Basic Salary can have max 2 decimal places.";
+        }
+
+        if (is_numeric($hra) && !preg_match('/^\d+(\.\d{1,2})?$/', $hra)) {
+            $errors[] = "HRA can have max 2 decimal places.";
+        }
+
+        if (is_numeric($deductions) && !preg_match('/^\d+(\.\d{1,2})?$/', $deductions)) {
+            $errors[] = "Deductions can have max 2 decimal places.";
+        }
+
+
+            if (empty($errors)) {
+                $updated = $salaryModel->updatesalary($id, $basic_salary, $hra, $deductions);
+
+                if ($updated) {
+                    header("Location:/salarystructure");
+                    exit();
+                } else {
+                    $errors[] = "Something went wrong while updating. Try again.";
+                }
             }
-        }
     }
 
     $this->view("admin/updatesalary", [
