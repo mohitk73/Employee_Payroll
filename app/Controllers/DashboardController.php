@@ -168,7 +168,7 @@ class DashboardController extends Controller
                 }
             }
         }
-        $managers = $dashboardModel->getEmployees(['role' => 3]);
+        $managers = $dashboardModel->getmanagers(['role' => 3]);
         $roles = [0 => 'Employee', 1 => 'Admin', 2 => 'HR', 3 => 'Manager'];
         $this->view('admin/addemployee', [
             'managers' => $managers,
@@ -248,7 +248,7 @@ class DashboardController extends Controller
             }
         }
 
-        $managers = $dashboardModel->getEmployees(['role' => 3]);
+        $managers = $dashboardModel->getmanagers(['role' => 3]);
 
         $roles = [0 => 'Employee', 1 => 'Admin', 2 => 'HR', 3 => 'Manager'];
 

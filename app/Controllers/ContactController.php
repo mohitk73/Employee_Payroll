@@ -6,6 +6,7 @@ use App\Core\Controller;
 use App\Helpers\Auth;
 use App\Helpers\Session;
 use App\Models\ContactModel;
+use App\Models\ProfileModel;
 
 class ContactController extends Controller
 {
@@ -15,6 +16,9 @@ class ContactController extends Controller
         Auth::requireRole([0,3]);
         $message = '';
         $errors = [];
+        $userid=Session::get('user_id');
+        $employeeModel=new ProfileModel();
+        $employeedetails=$employeeModel->getprofile($userid);
         if (isset($_POST['submit'])) {
             $name = htmlspecialchars($_POST['name']);
             $email = htmlspecialchars($_POST['email']);
@@ -55,6 +59,7 @@ class ContactController extends Controller
         $this->view('/employee/contactsupport',[
             'message'=>$message,
             'errors'=>$errors,
+            'details'=>$employeedetails
         ]);
     }
 }

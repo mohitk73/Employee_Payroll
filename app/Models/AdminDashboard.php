@@ -228,4 +228,11 @@ public function addEmployee(array $data)
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getmanagers(){
+        $sql="SELECT name,id  FROM employees WHERE role=3";
+        $result = $this->conn->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
+
+    }
+
 }
